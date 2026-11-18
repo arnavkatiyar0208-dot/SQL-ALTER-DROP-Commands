@@ -1,0 +1,150 @@
+Drop database if exists DDL_Commands;
+create DATABASE DDL_Commands;
+use  DDL_Commands;
+
+CREATE TABLE my_table(
+id INT,
+name VARCHAR(100) Not NULL,
+age int NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO my_table (id, name, age) VALUES
+(1, 'Rohit', 25),
+(2, 'Sachin', 35),
+(3, 'Vikas', 28);
+
+-- Create my_table2
+-- Create my_table2
+CREATE TABLE my_table2(
+    id INT,
+    description VARCHAR(255) NOT NULL
+);
+
+-- Insert data into my_table2
+INSERT INTO my_table2 (id, description) VALUES
+(1, 'Item 1'),
+(2, 'Item 2'),
+(3, 'Item 3');
+ALTER TABLE my_table
+RENAME COLUMN name TO full_name;
+
+
+-- 2. Change age data type from INT to BIGINT
+
+ALTER TABLE my_table
+MODIFY age BIGINT;
+
+
+-- 3. Add email column
+
+ALTER TABLE my_table
+ADD email VARCHAR(100);
+
+
+-- 4. Add middle_name after name
+
+ALTER TABLE my_table
+ADD middle_name VARCHAR(50) AFTER name;
+
+
+-- 5. Add EMP_Rank as the first column
+
+ALTER TABLE my_table
+ADD EMP_Rank INT FIRST;
+
+
+-- 6. Change created_at to DATETIME
+
+ALTER TABLE my_table
+MODIFY created_at DATETIME;
+
+
+-- 7. Change description to TEXT
+
+ALTER TABLE my_table2
+MODIFY description TEXT;
+
+
+-- 8. Make name column nullable
+
+ALTER TABLE my_table
+MODIFY name VARCHAR(100) NULL;
+
+
+-- 9. Add PRIMARY KEY on id
+
+ALTER TABLE my_table
+ADD PRIMARY KEY (id);
+
+
+-- 10. Drop middle_name column
+
+ALTER TABLE my_table
+DROP COLUMN middle_name;
+
+
+-- 11. Rename email_address to email
+
+ALTER TABLE my_table
+RENAME COLUMN email_address TO email;
+
+
+-- 12. Allow NULL values in age
+
+ALTER TABLE my_table
+MODIFY age BIGINT NULL;
+
+
+-- 13. Add FOREIGN KEY constraint
+
+ALTER TABLE my_table2
+ADD CONSTRAINT fk_id
+FOREIGN KEY (id)
+REFERENCES my_table(id);
+
+
+-- 14. Remove FOREIGN KEY constraint
+
+ALTER TABLE my_table2
+DROP FOREIGN KEY fk_id;
+
+
+-- 15. Change name column length to 200
+
+ALTER TABLE my_table
+MODIFY name VARCHAR(200);
+
+
+-- ==========================================
+-- DROP COMMANDS
+-- ==========================================
+
+
+-- 16. Drop my_table2
+
+DROP TABLE my_table2;
+
+
+-- 17. Drop foreign key constraint fk_id
+
+ALTER TABLE my_table2
+DROP FOREIGN KEY fk_id;
+
+
+-- 18. Drop PRIMARY KEY
+
+ALTER TABLE my_table
+DROP PRIMARY KEY;
+
+
+-- 19. Drop age column
+
+ALTER TABLE my_table
+DROP COLUMN age;
+
+
+-- 20. Drop DDL_Commands database
+
+DROP DATABASE DDL_Commands;
+
